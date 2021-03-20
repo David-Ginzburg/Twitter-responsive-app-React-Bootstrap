@@ -31,7 +31,7 @@ export default class PostAddForm extends Component {
     render() {
         return (
             <form 
-                className="bottom-panel d-flex" 
+                className="bottom-panel d-flex flex-column flex-md-row" 
                 onSubmit={this.onSubmit}
             >
                 <input 
@@ -43,7 +43,7 @@ export default class PostAddForm extends Component {
                 />
                 <button
                     type="submit"
-                    className="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary mt-2 mt-md-0"
                 >
                 Добавить
                 </button>

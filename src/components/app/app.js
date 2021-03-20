@@ -123,28 +123,30 @@ export default class App extends Component {
 
         return (
             <div className="app">
-                <AppHeader
-                    total={total}
-                    liked={liked}
-                />
-                <div className="search-panel d-flex">
-                    <SearchPanel 
-                        onUpdateSearch={this.onUpdateSearch}
+                <div className="container">
+                    <AppHeader
+                        total={total}
+                        liked={liked}
                     />
-                    <PostStatusFilter
-                        filter={filter}
-                        onUpdateFilter={this.onUpdateFilter}
+                    <div className="search-panel d-flex flex-column">
+                        <SearchPanel 
+                            onUpdateSearch={this.onUpdateSearch}
+                        />
+                        <PostStatusFilter
+                            filter={filter}
+                            onUpdateFilter={this.onUpdateFilter}
+                        />
+                    </div>
+                    <PostList
+                        posts={visiblePosts} 
+                        onDelete={this.deleteItem}
+                        onToggleImportant={this.onToggleImportant}
+                        onToggleLiked={this.onToggleLiked}
+                    />
+                    <PostAddForm 
+                        onAdd={this.addItem}
                     />
                 </div>
-                <PostList
-                    posts={visiblePosts} 
-                    onDelete={this.deleteItem}
-                    onToggleImportant={this.onToggleImportant}
-                    onToggleLiked={this.onToggleLiked}
-                />
-                <PostAddForm 
-                    onAdd={this.addItem}
-                />
             </div>
         )
     }
