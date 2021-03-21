@@ -20,18 +20,11 @@ export default class App extends Component {
             term: '',
             filter: 'all'
         };
-        this.deleteItem = this.deleteItem.bind(this);
-        this.addItem = this.addItem.bind(this);
-        this.onToggleImportant = this.onToggleImportant.bind(this);
-        this.onToggleLiked = this.onToggleLiked.bind(this);
-        this.searchPost = this.searchPost.bind(this);
-        this.onUpdateSearch = this.onUpdateSearch.bind(this);
-        this.onUpdateFilter = this.onUpdateFilter.bind(this);
 
         this.maxId = 4;
     }
 
-    deleteItem(id) {
+    deleteItem = (id) => {
         this.setState(({data}) => {
             const newArr = data.filter(item => item.id !== id);
             return {
@@ -40,7 +33,7 @@ export default class App extends Component {
         });
     }
 
-    addItem(body) {
+    addItem = (body) => {
         if (body) {
             const newItem = {
                 label: body,
@@ -57,7 +50,7 @@ export default class App extends Component {
         }
     }
 
-    onToggleImportant(id) {
+    onToggleImportant = (id) => {
         this.setState(({data}) => {
             const index = data.findIndex(elem => elem.id === id);
             const before = data.slice(0, index);
@@ -73,7 +66,7 @@ export default class App extends Component {
         });
     }
 
-    onToggleLiked(id) {
+    onToggleLiked = (id) => {
         this.setState(({data}) => {
             const index = data.findIndex(elem => elem.id === id);
             const before = data.slice(0, index);
@@ -89,7 +82,7 @@ export default class App extends Component {
         });
     }
 
-    searchPost(items, term) {
+    searchPost = (items, term) => {
         if (term.length === 0) {
             return items
         }
@@ -97,11 +90,11 @@ export default class App extends Component {
         return items.filter(item => item.label.indexOf(term) > -1);
     }
 
-    onUpdateSearch(term) {
+    onUpdateSearch = (term) => {
         this.setState({term});
     }
 
-    filterPost(items, filter) {
+    filterPost = (items, filter) => {
         if (filter === 'like') {
             return items.filter(item => item.like);
         }
@@ -109,7 +102,7 @@ export default class App extends Component {
         return items;
     }
 
-    onUpdateFilter(filter) {
+    onUpdateFilter = (filter) => {
         this.setState({filter});
     }
 
